@@ -52,18 +52,31 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+# Standard User Authentication Form
 gem 'devise', '~> 4.4.3'
+# Good CSS framework gem for young developers creating demo apps
 gem 'bulma-rails', '~> 0.6.2'
+# Generates simpler forms outside of the typical rails forms
 gem 'simple_form', '~> 3.5.1'
+# Configurable and documented Rails view helper for adding g
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'sidekiq', '~> 5.0'
+# Image upload service , simple setup...comparative
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+# We can create different thumbnails so you need mini_magick to utilize this feature
 gem 'mini_magick', '~> 4.8'
+# Stripe is the go to gem for accepting payments online. Very good for young developers EXPLAIN WHY
 gem 'stripe', '~> 3.11'
+  # a rich text editor for everyday writing
 gem 'trix', '~> 0.11.1'
+# Heroku-friendly Rails app configuration
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 group :development, :test do
   gem 'better_errors', '~> 2.4'
+  # Cleaner/More direct information of where you went wrong in your project
+  # Task Runner For Ruby
   gem 'guard', '~> 2.14'
+  # Correlates with the  guard add=on
+  # Shows Changes Every Time You Update Your Views
   gem 'guard-livereload', '~> 2.5'
 end

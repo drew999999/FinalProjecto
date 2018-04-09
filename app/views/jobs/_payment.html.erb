@@ -1,0 +1,53 @@
+<% if !@job.persisted? %>
+<!-- the form will apply for a customer in need, but if they did and the sale is on record we want to make sure the customer isn't charged twice -->
+  <h4 class="subtitle is-4">Payment</h4>
+  <!-- clear -->
+
+  <div class="notification is-light has-text-centered">
+    <i class="job-credit-card"></i>
+    All jobs cost <strong>$400</strong> USD for 14 days.
+    <span class="block mb4"></span>
+  </div>
+<!-- clear -->
+<!-- creating the elements that will represent the actual Stripe form that comes through JS
+including the Stripe Library which correlates with the Stripe elements that we are linking to
+in our application layout file -->
+  <div class="form-row">
+    <label for="card-element" class="label">
+      Enter credit or debit card
+    </label>
+<!-- clear -->
+
+  <div id="card-element" class="form-control">
+    <!-- clear -->
+
+  </div>
+<!-- clear -->
+
+  <div id="card-errors" role="alert"></div>
+</div>
+<!-- clear -->
+<!-- Render error's if the user does not have the funds  -->
+<% if current_user.stripe_id.present? %>
+  <div class="last-card bg-light pa4 border-radius-3 mt4">
+    <h5 class="is-6 title pt2">Previously used card</h5>
+      <table class="table is-narrow bg-light is-fullwidth">
+        <thread>
+          <th>Card Brand</th>
+          <th>Last 4 Digits</th>
+          <th>Expiration Month</th>
+          <th>Expiration Year</th>
+          <!-- will display the info of their purchase -->
+        </thread>
+        <tr>
+          <td><%= current_user.card_brand %></td>
+          <td><%= current_user.card_last4 %></td>
+          <td><%= current_user.card_exp_month %></td>
+          <td><%= current_user.card_exp_year %></td>
+    <!-- clear -->
+        </tr>
+      </table>
+    </div>
+  <% end %>
+<% end %>
+<!-- clear -->

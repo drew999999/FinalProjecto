@@ -1,0 +1,122 @@
+<%= simple_form_for @job, html: { multipart: true } do |f| %>
+  <%= f.error_notification %>
+<!-- clear -->
+      <div class="field">
+        <div class="control">
+          <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html:
+          { class: "label" }, placeholder: "Software Engineer" %>
+        </div>
+      </div>
+<!-- clear -->
+
+
+<!-- clear -->
+
+<div class="field">
+  <div class="control">
+    <%= f.input :apply_url, required: true, input_html:
+    { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+  </div>
+</div>
+<!-- clear -->
+<div class="columns">
+  <div class="field column is-4">
+    <div class="control">
+      <label class="label">Job Type:</label>
+      <div class="control has-icons-left">
+        <span select="select">
+          <%= f.input :job_type, collection: Job::JOB_TYPES, prompt: "Select a job type" %>
+          <!-- clear -->
+    </span>
+    <span class="icon is-small is-left">
+      <i class="job-briefcase"></i>
+      <!-- clear -->
+      </span>
+    </div>
+  </div>
+</div>
+<!-- clear -->
+<!-- we want to select what we made in our models earlier with the job constant in job.rb     clear -->
+
+  <div class="column">
+<!-- clear -->
+    <div class="field">
+      <div class="control">
+        <%= f.input :location, require: true, input_html: { class: "input" }, wrapper: false, label_html:
+        { class: "label" }, hint: 'Examples: "Philadelphia, PA", "Trenton, NJ", "Anywhere"' %>
+  </div>
+</div>
+<!-- clear -->
+<!-- clear -->
+<div class="field">
+  <div class="control">
+    <label for="job[remote_ok]">
+      <%= f.input :remote_ok, required: false, input_html:
+      { class: "checkbox" }, wrapper: false, label: false %>
+      Amazing 401k Benefits!
+        </label><i class="job-wifi"></i>
+        <!-- clear -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- clear -->
+<div class="field">
+  <div class="control">
+    <%= f.input :description, required: true, input_html:
+    { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+  </div>
+</div>
+<!-- clear -->
+
+
+  <div class="columns">
+<!-- clear -->
+<div class="field column">
+  <div class="control">
+    <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "Company" %>
+  </div>
+</div>
+<!-- clear -->
+
+  <div class="field column">
+    <div class="control">
+      <%= f.input :url, required: true, input_html: { class: "input" }, wrapper: false, label_html:
+      { class: "label" }, label: "Company Website", placeholder: "http://company.com" %>
+    </div>
+  </div>
+<!-- clear -->
+</div>
+<!-- clear -->
+<div class="columns">
+  <div class="field column is-4">
+    <div class="control">
+      <label class="label">Logo Image</label>
+      <div class="file">
+        <label class="file-label">
+          <!-- adding a custom class here so we can hook it into our JS        clear as well -->
+          <%= f.input :avatar, as: :file, require: false, input_html: { class: "file-input job-avatar" },
+            label: false, wrapper: false %>
+          <span class="file-cta">
+            <span class="file-icon"><i class="job-upload"></i></span>
+            <span class="file-lable">Choose a file...</span>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <!-- clear -->
+  <div class="column">
+    <output id="list"></output>
+  </div>
+</div>
+<hr />
+<!-- clear -->
+  <!-- hooks into reader in the browser that will pars the image and immediately return it in the browser    clear -->
+  <%= render 'payment' %>
+
+    <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
+    <!-- clear -->
+
+<% end %>
+<!-- clear -->
